@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="th" data-active="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chakron Yuraket — Software Developer</title>
+<meta name="description" content="Chakron Yuraket — Software Developer Portfolio">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --color-primary:#0F172A;
+    --color-secondary:#334155;
+    --color-accent:#0369A1;
+    --color-bg:#F8FAFC;
+    --color-surface:#FFFFFF;
+    --color-fg:#0F172A;
+    --color-muted:#475569;
+    --color-border:#E2E8F0;
+    --color-border-strong:#CBD5E1;
+    --color-ring:#0F172A;
+    --font-heading:'Inter','Noto Sans Thai',sans-serif;
+    --font-body:'Inter','Noto Sans Thai',sans-serif;
+    --font-mono:'IBM Plex Mono',monospace;
+    --space-1:8px; --space-2:16px; --space-3:24px; --space-4:32px; --space-5:48px; --space-6:64px; --space-7:96px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--color-bg); color:var(--color-fg);
+    font-family:var(--font-body); font-size:16px; line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  .container{max-width:960px; margin:0 auto; padding:0 var(--space-3);}
+
+  header{
+    position:sticky; top:0; z-index:50; background:rgba(248,250,252,0.92);
+    backdrop-filter:blur(8px); border-bottom:1px solid var(--color-border);
+  }
+  nav{display:flex; align-items:center; justify-content:space-between; padding:var(--space-2) 0;}
+  .logo{font-family:var(--font-heading); font-weight:700; font-size:1.05rem; letter-spacing:-0.01em;}
+  .logo .dot{color:var(--color-accent);}
+  .nav-links{display:flex; gap:var(--space-4); align-items:center;}
+  .nav-links a{font-size:0.92rem; font-weight:500; color:var(--color-muted); transition:color 200ms ease; padding:6px 2px;}
+  .nav-links a:hover,.nav-links a:focus-visible{color:var(--color-primary);}
+  .nav-links a:focus-visible{outline:2px solid var(--color-ring); outline-offset:4px; border-radius:4px;}
+
+  .lang-toggle{display:flex; background:var(--color-surface); border:1px solid var(--color-border-strong); border-radius:8px; padding:2px; gap:2px;}
+  .lang-toggle button{
+    font-family:var(--font-body); font-weight:600; font-size:0.78rem; padding:6px 13px;
+    border:none; border-radius:6px; background:transparent; color:var(--color-muted); cursor:pointer;
+    min-height:32px; transition:background 200ms ease, color 200ms ease;
+  }
+  .lang-toggle button.active{background:var(--color-primary); color:#fff;}
+  .lang-toggle button:focus-visible{outline:2px solid var(--color-ring); outline-offset:2px;}
+
+  .menu-btn{display:none; background:none; border:none; color:var(--color-fg); cursor:pointer; min-width:44px; min-height:44px;}
+
+  .hero{padding:var(--space-6) 0 var(--space-5); border-bottom:1px solid var(--color-border);}
+  .kicker{
+    font-family:var(--font-mono); font-size:0.8rem; font-weight:500; color:var(--color-accent);
+    text-transform:uppercase; letter-spacing:0.08em; margin-bottom:var(--space-2);
+  }
+  h1{
+    font-family:var(--font-heading); font-weight:700; font-size:clamp(1.9rem,4vw,2.6rem);
+    line-height:1.25; letter-spacing:-0.01em; margin-bottom:var(--space-2); max-width:22ch;
+  }
+  .hero-desc{color:var(--color-muted); font-size:1.05rem; max-width:62ch; margin-bottom:var(--space-3);}
+  .btn-row{display:flex; gap:var(--space-2); flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; font-weight:600; font-size:0.92rem;
+    padding:11px 20px; border-radius:8px; cursor:pointer; min-height:44px;
+    transition:background 180ms ease, border-color 180ms ease, color 180ms ease;
+    border:1px solid transparent;
+  }
+  .btn:focus-visible{outline:2px solid var(--color-ring); outline-offset:2px;}
+  .btn-primary{background:var(--color-primary); color:#fff;}
+  .btn-primary:hover{background:#1E293B;}
+  .btn-outline{background:transparent; border-color:var(--color-border-strong); color:var(--color-primary);}
+  .btn-outline:hover{border-color:var(--color-primary); background:#F1F5F9;}
+
+  section{padding:var(--space-6) 0; border-bottom:1px solid var(--color-border);}
+  section:last-of-type{border-bottom:none;}
+  .section-head{margin-bottom:var(--space-4);}
+  .section-tag{font-family:var(--font-mono); font-size:0.75rem; font-weight:500; text-transform:uppercase; letter-spacing:0.08em; color:var(--color-accent); margin-bottom:8px;}
+  h2{font-family:var(--font-heading); font-weight:700; font-size:clamp(1.4rem,3vw,1.85rem); letter-spacing:-0.01em;}
+
+  .project-card{
+    background:var(--color-surface); border:1px solid var(--color-border); border-radius:12px;
+    padding:var(--space-4); margin-bottom:var(--space-3);
+  }
+  .project-top{display:flex; align-items:baseline; justify-content:space-between; gap:var(--space-2); flex-wrap:wrap; margin-bottom:var(--space-1);}
+  .project-card h3{font-family:var(--font-heading); font-size:1.2rem; font-weight:700;}
+  .project-links{display:flex; gap:var(--space-2); flex-wrap:wrap;}
+  .project-link{
+    font-size:0.85rem; font-weight:600; color:var(--color-accent); display:inline-flex; align-items:center; gap:4px;
+    min-height:32px; border-bottom:1px solid transparent; transition:border-color 180ms ease;
+  }
+  .project-link:hover{border-bottom-color:var(--color-accent);}
+  .project-card p{color:var(--color-muted); font-size:0.98rem; margin-bottom:var(--space-2);}
+  .project-goals{margin:var(--space-2) 0; padding-left:var(--space-3);}
+  .project-goals li{
+    position:relative; font-size:0.92rem; color:var(--color-muted); margin-bottom:8px; padding-left:var(--space-2);
+  }
+  .project-goals li::before{content:"—"; position:absolute; left:0; color:var(--color-border-strong);}
+  .project-goals li strong{color:var(--color-fg); font-weight:600;}
+  .stack-table{width:100%; border-collapse:collapse; margin:var(--space-2) 0; font-size:0.88rem;}
+  .stack-table td{padding:7px 10px; border-bottom:1px solid var(--color-border); vertical-align:top;}
+  .stack-table td:first-child{color:var(--color-muted); font-family:var(--font-mono); font-size:0.8rem; width:38%; white-space:nowrap;}
+  .stack-table tr:last-child td{border-bottom:none;}
+  .project-tags{display:flex; flex-wrap:wrap; gap:6px; margin-top:var(--space-2);}
+  .project-tags span{
+    font-family:var(--font-mono); font-size:0.74rem; color:var(--color-secondary);
+    background:#F1F5F9; border:1px solid var(--color-border); padding:3px 9px; border-radius:5px;
+  }
+  .req-list{margin-top:var(--space-2); padding-left:var(--space-3);}
+  .req-list li{font-size:0.9rem; color:var(--color-muted); margin-bottom:4px; list-style:disc;}
+
+  .skills-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:var(--space-3);}
+  .skill-col h3{font-family:var(--font-heading); font-size:0.95rem; font-weight:700; margin-bottom:var(--space-2); color:var(--color-primary);}
+  .skill-list{display:flex; flex-direction:column; gap:6px;}
+  .skill-list li{font-size:0.92rem; color:var(--color-muted); padding-left:14px; position:relative;}
+  .skill-list li::before{content:""; position:absolute; left:0; top:9px; width:5px; height:5px; background:var(--color-border-strong); border-radius:50%;}
+
+  .contact-row{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:var(--space-3);}
+  .contact-row p{color:var(--color-muted); max-width:48ch;}
+  .email-link{
+    font-family:var(--font-mono); font-weight:600; font-size:1rem; color:var(--color-accent);
+    border-bottom:1px solid var(--color-border-strong); padding-bottom:2px; min-height:44px; display:inline-flex; align-items:center;
+  }
+  .email-link:hover{border-bottom-color:var(--color-accent);}
+
+  footer{padding:var(--space-4) 0; text-align:center; color:var(--color-muted); font-size:0.85rem;}
+
+  [data-lang="en"]{display:none;}
+  html[data-active="en"] [data-lang="th"]{display:none;}
+  html[data-active="en"] [data-lang="en"]{display:revert;}
+
+  @media (max-width:760px){
+    .nav-links{
+      position:fixed; inset:60px 0 auto 0; flex-direction:column; align-items:flex-start;
+      background:var(--color-surface); border-bottom:1px solid var(--color-border);
+      padding:var(--space-3); gap:var(--space-2); transform:translateY(-120%);
+      transition:transform 220ms ease; max-height:70vh; overflow-y:auto;
+    }
+    .nav-links.open{transform:translateY(0);}
+    .menu-btn{display:flex; align-items:center; justify-content:center;}
+    .stack-table td:first-child{width:44%;}
+    .contact-row{flex-direction:column; align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <a href="#top" class="logo">Chakron<span class="dot">.</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#projects" data-lang="th">ผลงาน</a><a href="#projects" data-lang="en">Projects</a></li>
+        <li><a href="#skills" data-lang="th">ทักษะ</a><a href="#skills" data-lang="en">Skills</a></li>
+        <li><a href="#interests" data-lang="th">ความสนใจ</a><a href="#interests" data-lang="en">Interests</a></li>
+        <li><a href="#contact" data-lang="th">ติดต่อ</a><a href="#contact" data-lang="en">Contact</a></li>
+      </ul>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div class="lang-toggle" role="group" aria-label="Language switch">
+          <button type="button" id="btnTh" class="active" aria-pressed="true">TH</button>
+          <button type="button" id="btnEn" aria-pressed="false">EN</button>
+        </div>
+        <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="container">
+      <div class="kicker" data-lang="th">พอร์ตโฟลิโอนักพัฒนาซอฟต์แวร์</div>
+      <div class="kicker" data-lang="en">Software Developer Portfolio</div>
+      <h1>Chakron Yuraket</h1>
+      <p class="hero-desc" data-lang="th">
+        นักพัฒนาซอฟต์แวร์ที่สนใจสร้างซอฟต์แวร์ใช้งานได้จริง ทั้งระบบ Backend เว็บแอปพลิเคชัน
+        และเครื่องมือสำหรับนักพัฒนา
+      </p>
+      <p class="hero-desc" data-lang="en">
+        Software Developer / Engineer interested in building practical software, backend systems,
+        web applications, and developer tools.
+      </p>
+      <div class="btn-row">
+        <a href="#projects" class="btn btn-primary">
+          <span data-lang="th">ดูผลงาน</span><span data-lang="en">View Projects</span>
+        </a>
+        <a href="https://github.com/chakronwork" target="_blank" rel="noopener" class="btn btn-outline">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-tag" data-lang="th">ผลงาน</div>
+        <div class="section-tag" data-lang="en">Projects</div>
+        <h2 data-lang="th">โปรเจกต์คัดสรร</h2>
+        <h2 data-lang="en">Selected Projects</h2>
+      </div>
+
+      <article class="project-card">
+        <div class="project-top">
+          <h3>FirstPOS</h3>
+          <div class="project-links">
+            <a class="project-link" href="https://github.com/chakronwork/First-POS" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </div>
+        <p data-lang="th">
+          แอป Point-of-Sale บนเดสก์ท็อป (WPF) ขนาดกะทัดรัด สำหรับร้านกาแฟหรือคีออสก์ขนาดเล็ก
+          มีเมนูสินค้าแบบมีรูป ตะกร้าสินค้าพร้อมระบบตัดสต็อก ค้นหาสินค้าได้ และพิมพ์ใบเสร็จแบบ ESC/POS พร้อมพรีวิวก่อนพิมพ์
+        </p>
+        <p data-lang="en">
+          A minimal WPF point-of-sale (POS) desktop app for a small cafe or kiosk. Includes a product
+          menu with images, a cart with stock control, searchable items, and ESC/POS receipt printing
+          with a print preview.
+        </p>
+        <table class="stack-table">
+          <tr><td data-lang="th">เทคโนโลยี</td><td data-lang="th">.NET (net10.0-windows), WPF (XAML)</td>
+              <td data-lang="en">Tech Stack</td><td data-lang="en">.NET (net10.0-windows), WPF (XAML)</td></tr>
+          <tr><td data-lang="th">การพิมพ์ใบเสร็จ</td><td data-lang="th">ESC/POS ผ่าน ESC-POS-USB-NET และ ESCPOS_NET</td>
+              <td data-lang="en">Printing</td><td data-lang="en">ESC/POS via ESC-POS-USB-NET and ESCPOS_NET</td></tr>
+        </table>
+        <ul class="req-list">
+          <li data-lang="th">Windows 10/11</li><li data-lang="en">Windows 10/11</li>
+          <li data-lang="th">.NET SDK 10.0 (หรือ Visual Studio 2022/2025 ที่ลง WPF workload)</li>
+          <li data-lang="en">.NET SDK 10.0 (or Visual Studio 2022/2025 with WPF workload)</li>
+          <li data-lang="th">เครื่องพิมพ์ความร้อน ESC/POS ที่รองรับ (USB หรือติดตั้งเป็นเครื่องพิมพ์ของ Windows)</li>
+          <li data-lang="en">A compatible ESC/POS thermal printer (USB or installed as a Windows printer)</li>
+        </ul>
+      </article>
+
+      <article class="project-card">
+        <div class="project-top">
+          <h3>FastOS</h3>
+          <div class="project-links">
+            <a class="project-link" href="https://github.com/chakronwork/fastos" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </div>
+        <p data-lang="th">
+          ดิสโทร Linux ที่สร้างขึ้นเองตั้งแต่ต้น ตามแนวทาง Linux From Scratch (LFS) ใช้ Linux Kernel
+          เวอร์ชัน 6.6.21 (LTS) เป็นแกนหลัก โปรเจกต์นี้ทำขึ้นเพื่อศึกษาเจาะลึกสถาปัตยกรรมของระบบปฏิบัติการ
+          ตั้งแต่ kernel, bootloader ไปจนถึง userland และใช้เป็นผลงานแสดงทักษะด้าน systems development
+        </p>
+        <p data-lang="en">
+          A custom-built Linux distribution, built from scratch following the Linux From Scratch (LFS)
+          approach, running Linux Kernel 6.6.21 (LTS). Created as a deep-dive into Linux OS architecture —
+          from the kernel and bootloader up through userland — and as a portfolio piece demonstrating
+          systems development skills.
+        </p>
+        <ul class="project-goals">
+          <li data-lang="th"><strong>เข้าใจ Linux อย่างลึกซึ้ง</strong> — compile kernel, สร้าง toolchain และประกอบ root filesystem เอง แทนการใช้ดิสโทรสำเร็จรูป</li>
+          <li data-lang="en"><strong>Deeply understand Linux</strong> — compile the kernel, build the toolchain, and assemble the root filesystem by hand rather than using a pre-built distro</li>
+          <li data-lang="th"><strong>ระบบที่เข้าใจได้ทุกส่วน</strong> — ทุกคอมโพเนนต์เลือกและ compile จาก source อย่างตั้งใจ</li>
+          <li data-lang="en"><strong>A fully understood system</strong> — every component deliberately chosen and compiled from source</li>
+          <li data-lang="th"><strong>รากฐานให้ต่อยอดได้</strong> — วางโครงสร้างให้ปรับแต่งและขยายฟีเจอร์ได้ในอนาคต</li>
+          <li data-lang="en"><strong>A foundation to build on</strong> — structured for future customization and extension</li>
+        </ul>
+        <table class="stack-table">
+          <tr><td data-lang="th">Kernel</td><td>Linux 6.6.21 (LTS)</td>
+              <td data-lang="en">Kernel</td><td>Linux 6.6.21 (LTS)</td></tr>
+          <tr><td data-lang="th">พื้นฐาน</td><td data-lang="th">สร้างเองตามแนวทาง Linux From Scratch (LFS)</td>
+              <td data-lang="en">Base</td><td data-lang="en">Custom-built following the LFS approach</td></tr>
+          <tr><td data-lang="th">สถาปัตยกรรม</td><td>x86_64</td>
+              <td data-lang="en">Architecture</td><td>x86_64</td></tr>
+          <tr><td data-lang="th">รูปแบบการแจกจ่าย</td><td data-lang="th">Bootable ISO</td>
+              <td data-lang="en">Distribution format</td><td data-lang="en">Bootable ISO</td></tr>
+        </table>
+      </article>
+
+      <article class="project-card">
+        <div class="project-top">
+          <h3 data-lang="th">Agri-Tech Marketplace</h3>
+          <h3 data-lang="en">Agri-Tech Marketplace</h3>
+          <div class="project-links">
+            <a class="project-link" href="https://github.com/chakronwork/schoo-agi-shop" target="_blank" rel="noopener">GitHub ↗</a>
+            <a class="project-link" href="https://agri-tech-marketplace-azure.vercel.app" target="_blank" rel="noopener">
+              <span data-lang="th">Demo</span><span data-lang="en">Demo</span> ↗
+            </a>
+          </div>
+        </div>
+        <p data-lang="th">
+          แพลตฟอร์ม E-Commerce ที่เป็นตลาดกลางซื้อขายอุปกรณ์การเกษตรสมัยใหม่ เช่น โดรนเพื่อการเกษตร
+          เซ็นเซอร์ IoT และเครื่องมือไฮเทคต่าง ๆ พัฒนาขึ้นเพื่อแสดงทักษะการพัฒนา Full-Stack ขั้นสูง
+          รูปแบบสถาปัตยกรรมสมัยใหม่ และแนวปฏิบัติด้านความปลอดภัยระดับองค์กร
+        </p>
+        <p data-lang="en">
+          An e-commerce platform designed as a marketplace for buying and selling modern agricultural
+          equipment — agricultural drones, IoT sensors, and high-tech tools. Built to demonstrate
+          advanced full-stack development, modern architecture patterns, and enterprise-level security practices.
+        </p>
+        <div class="project-tags">
+          <span>Next.js 15 (App Router)</span><span>TypeScript 5.x</span><span>Tailwind CSS 4.x</span>
+          <span>TanStack Query</span><span>React Hook Form + Zod</span><span>Radix UI</span><span>Framer Motion</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-tag" data-lang="th">ทักษะ</div>
+        <div class="section-tag" data-lang="en">Skills</div>
+        <h2 data-lang="th">ภาษาและเทคโนโลยี</h2>
+        <h2 data-lang="en">Languages &amp; Technologies</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-col">
+          <h3 data-lang="th">ภาษาโปรแกรม</h3>
+          <h3 data-lang="en">Programming Languages</h3>
+          <ul class="skill-list">
+            <li>JavaScript</li><li>Python</li><li>PHP</li><li>Golang</li><li>C</li><li>C++</li>
+          </ul>
+        </div>
+        <div class="skill-col">
+          <h3 data-lang="th">เฟรมเวิร์กและเว็บ</h3>
+          <h3 data-lang="en">Frameworks &amp; Web</h3>
+          <ul class="skill-list">
+            <li data-lang="th">JavaScript Frameworks</li><li data-lang="en">JavaScript Frameworks</li>
+            <li data-lang="th">การพัฒนาเว็บแอปพลิเคชัน</li><li data-lang="en">Web Application Development</li>
+            <li>REST API</li>
+            <li data-lang="th">การพัฒนา Backend</li><li data-lang="en">Backend Development</li>
+          </ul>
+        </div>
+        <div class="skill-col">
+          <h3 data-lang="th">ฐานข้อมูล</h3>
+          <h3 data-lang="en">Database</h3>
+          <ul class="skill-list">
+            <li>PostgreSQL</li><li>MySQL</li><li>MongoDB</li><li>Firebase</li><li>NoSQL</li>
+          </ul>
+        </div>
+        <div class="skill-col">
+          <h3 data-lang="th">เครื่องมือและ Version Control</h3>
+          <h3 data-lang="en">Tools &amp; Version Control</h3>
+          <ul class="skill-list">
+            <li>Git</li><li>GitHub</li><li>GitLab</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="interests">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-tag" data-lang="th">ความสนใจ</div>
+        <div class="section-tag" data-lang="en">Interests</div>
+        <h2 data-lang="th">สิ่งที่สนใจ</h2>
+        <h2 data-lang="en">Areas of Interest</h2>
+      </div>
+      <ul class="skill-list" style="columns:2; gap:var(--space-4);">
+        <li data-lang="th">วิศวกรรมซอฟต์แวร์</li><li data-lang="en">Software Engineering</li>
+        <li data-lang="th">การพัฒนา Backend</li><li data-lang="en">Backend Development</li>
+        <li data-lang="th">System Programming</li><li data-lang="en">System Programming</li>
+        <li data-lang="th">Linux</li><li data-lang="en">Linux</li>
+        <li data-lang="th">ระบบฐานข้อมูล</li><li data-lang="en">Database Systems</li>
+        <li data-lang="th">การพัฒนา API</li><li data-lang="en">API Development</li>
+        <li data-lang="th">แอปพลิเคชัน AI</li><li data-lang="en">AI Applications</li>
+        <li data-lang="th">ซอฟต์แวร์ธุรกิจ</li><li data-lang="en">Business Software</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-tag" data-lang="th">ติดต่อ</div>
+        <div class="section-tag" data-lang="en">Contact</div>
+        <h2 data-lang="th">ติดต่อผม</h2>
+        <h2 data-lang="en">Get in Touch</h2>
+      </div>
+      <div class="contact-row">
+        <p data-lang="th">สนใจร่วมงานหรือพูดคุยเกี่ยวกับโปรเจกต์ ติดต่อได้ทางอีเมล</p>
+        <p data-lang="en">Open to opportunities and collaboration — feel free to reach out by email.</p>
+        <a class="email-link" href="mailto:Chakronwork@gmail.com">Chakronwork@gmail.com</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p data-lang="th">© 2026 Chakron Yuraket</p>
+    <p data-lang="en">© 2026 Chakron Yuraket</p>
+  </div>
+</footer>
+
+<script>
+  const html = document.documentElement;
+  const btnTh = document.getElementById('btnTh');
+  const btnEn = document.getElementById('btnEn');
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+
+  function setLang(lang){
+    html.setAttribute('data-active', lang);
+    html.setAttribute('lang', lang);
+    btnTh.classList.toggle('active', lang === 'th');
+    btnEn.classList.toggle('active', lang === 'en');
+    btnTh.setAttribute('aria-pressed', lang === 'th');
+    btnEn.setAttribute('aria-pressed', lang === 'en');
+    try { localStorage.setItem('siteLang', lang); } catch(e) {}
+  }
+  btnTh.addEventListener('click', () => setLang('th'));
+  btnEn.addEventListener('click', () => setLang('en'));
+  let savedLang = 'th';
+  try { savedLang = localStorage.getItem('siteLang') || 'th'; } catch(e) {}
+  setLang(savedLang);
+
+  menuBtn.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open);
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+</body>
+</html>
