@@ -286,6 +286,41 @@
 
       <article class="project-card">
         <div class="project-top">
+          <h3>firstOS</h3>
+          <div class="project-links">
+            <a class="project-link" href="https://github.com/chakronwork/Firstkernel" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </div>
+        <p data-lang="th">
+          เคอร์เนลระบบปฏิบัติการ x86 ขนาดเล็กที่เขียนด้วยภาษา C และ Assembly บูตผ่าน Multiboot 1
+          ตั้งค่าโหมด VGA text mode และแสดงข้อความเริ่มต้นระบบ โปรเจกต์นี้เป็นจุดเริ่มต้นของการศึกษา
+          การพัฒนา OS ระดับ low-level ก่อนต่อยอดไปเป็น FastOS
+        </p>
+        <p data-lang="en">
+          A small x86 hobby operating system kernel written in C and assembly. It boots via
+          Multiboot 1, initializes VGA text mode, and prints a startup banner. This project was the
+          starting point for learning low-level OS development, later extended into the FastOS project.
+        </p>
+        <ul class="project-goals">
+          <li data-lang="th"><strong>เริ่มต้นจากศูนย์</strong> — เขียน entry point, boot sequence และ 32-bit protected mode เอง</li>
+          <li data-lang="en"><strong>Started from zero</strong> — hand-written entry point, boot sequence, and 32-bit protected mode setup</li>
+          <li data-lang="th"><strong>พื้นฐานสำหรับต่อยอด</strong> — วางโครงสร้างไว้สำหรับ GDT/IDT, memory management, paging และ interrupt handling ในอนาคต</li>
+          <li data-lang="en"><strong>Foundation to build on</strong> — structured for future GDT/IDT setup, memory management, paging, and interrupt handling</li>
+        </ul>
+        <table class="stack-table">
+          <tr><td data-lang="th">ภาษา</td><td>C, x86 Assembly</td>
+              <td data-lang="en">Language</td><td>C, x86 Assembly</td></tr>
+          <tr><td data-lang="th">Boot</td><td data-lang="th">Multiboot 1</td>
+              <td data-lang="en">Boot</td><td data-lang="en">Multiboot 1</td></tr>
+          <tr><td data-lang="th">สถาปัตยกรรม</td><td>x86 (32-bit)</td>
+              <td data-lang="en">Architecture</td><td>x86 (32-bit)</td></tr>
+          <tr><td data-lang="th">รูปแบบการแจกจ่าย</td><td data-lang="th">Bootable ISO (GRUB), QEMU</td>
+              <td data-lang="en">Distribution format</td><td data-lang="en">Bootable ISO (GRUB), QEMU</td></tr>
+        </table>
+      </article>
+
+      <article class="project-card">
+        <div class="project-top">
           <h3 data-lang="th">Agri-Tech Marketplace</h3>
           <h3 data-lang="en">Agri-Tech Marketplace</h3>
           <div class="project-links">
